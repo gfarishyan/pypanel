@@ -9,7 +9,7 @@ from utils.httpd import install_httpd
 from utils.ftpd import install_ftpd
 
 
-panelBaseDir='/var/pypanel'
+panelBaseDir="/var/pypanel"
 
 
 def prompt(question):
@@ -35,7 +35,7 @@ def create_panel_dirs():
     
     #check does exists diretory or not ?
     
-    if not os.path.exists(panelBaseDir)
+    if not os.path.exists(panelBaseDir):
       print ("Pypanel base directoy {} couldn't found.".format(panelBaseDir))
       os.makedirs(panelBaseDir)
       print ("Created Pypanel base directoy at {}.".format(panelBaseDir))
