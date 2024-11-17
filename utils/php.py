@@ -6,7 +6,7 @@ def install_php():
   answer = input("Would you like to install php ? (yes, no)")
   if answer == "no":
     return
-    
+
   php_versions = ["55", "56", "70", "71", "72", "73", "74", "80", "81", "82", "83"]
   versions = input("Please specify which versions you would like to install ? {}".format(php_versions.join(' '))).strip().lower()
   versions = versions.replace(',', ' ')
@@ -15,7 +15,7 @@ def install_php():
   versions_missmatch = list(set(versions_arr) - set(php_versions))
   
   if (len(versions_missmatch) > 0):
-    print "Unsupported php version selected {}".format(php_versions.join(' '))
+    print("Unsupported php version selected {0}".format(php_versions.join(' ')))
     return install_php()
     
   php_version_extensions = {
@@ -172,15 +172,16 @@ def install_php():
          "xmlwriter", "xsl", "zip", "zlib"
        ],
       "extdended": [],
-    }}
+    }
+  }
     
-    for selected_php_version in versions_arr:
-      default_v = "php{}-php".format(selected_php_version)
-      cli = "default_v{}".format("cli")
-      install_list = [default_v, cli]
+  for selected_php_version in versions_arr:
+    default_v = "php{}-php".format(selected_php_version)
+    cli = "default_v{}".format("cli")
+    install_list = [default_v, cli]
       
-      for ext_list in php_version_extensions[selected_php_version]["default"]:
-        install_list.append("{0}-{1}".format(default_v, ext_list))
+    for ext_list in php_version_extensions[selected_php_version]["default"]:
+      install_list.append("{0}-{1}".format(default_v, ext_list))
     
-    subprocess.run(["dnf", "install", " ".join(install_list), "--yes"], check=True)
+  subprocess.run(["dnf", "install", " ".join(install_list), "--yes"], check=True)
     
