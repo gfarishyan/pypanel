@@ -1,1 +1,2 @@
-def install_ftp():
+def install_ftpd():
+  return

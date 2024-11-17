@@ -4,7 +4,13 @@ import subprocess
 
 
 def install_named():
-  subprocess.run(["dnf", "install", "bind bind-utils", "--yes"], check=True)
+  status = subprocess.run(["dnf", "install", "bind", "bind-chroot", "bind-libs", "bind-utils", "-y"], text = True, check=False)
+  
+  if status != 0:
+    print("Error occured.")
+    return
+  
+  
   subprocess.run(["setsebool -P named_write_master_zones on"], check=True)
   subprocess.run(["setsebool -P named_enable_zone_write on"], check=True)
   subprocess.run(["semanage fcontext -a -t named_zone_t \"/var/named(/.*)?\""], check=True)
@@ -12,7 +18,6 @@ def install_named():
   subprocess.run(["restorecon -Rv \"/var/named\" \"/etc/named.conf\" \"/var/named/data\""], check=True)
   subprocess.run(["systemctl start named"], check=True)
   subprocess.run(["systemctl enable named"], check=True)
-  
   
 def configure_named():
   targetDir = "/var/named/chroot"

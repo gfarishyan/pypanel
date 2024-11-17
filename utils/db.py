@@ -31,8 +31,8 @@ def install_databases():
     v = v.strip().lower()
     
     if v not in database_list[v]:
-      print "Not valid version selected."
-    else
+      print("Not valid version selected.")
+    else:
       selected_dbs_with_versions[db] = v
   
 def install_mysql(version):
