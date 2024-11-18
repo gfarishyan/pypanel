@@ -45,7 +45,7 @@ def create_panel_dirs():
 create_panel_dirs()
 install_named()
 #prompt_bind()
-#install_databases()
+install_databases()
 #install_php()
 #install_nodejs()
 #install_httpd()
