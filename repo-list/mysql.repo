@@ -1,0 +1,9 @@
+{
+  "dnf":{
+    "redhat": {
+	  "7": "mysql84-community-release-el7-1.noarch.rpm",
+	  "8": "mysql84-community-release-el8-1.noarch.rpm",
+      "9": "mysql84-community-release-el9-1.noarch.rpm"	  
+	}
+  }
+}

@@ -87,7 +87,15 @@ ftp_prompt() {
 
 #check do we have a python installed
 
+install_repos() {
+  #`dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm`
+  oss=`cat /etc/*-release | egrep "VERSION_ID" | cut -d = -f 2 | tr -d '"'`
+  oss=$(printf "%.0f" $oss )
+  echo "yes"|dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-$oss.noarch.rpm
+}
 
+
+install_repos
 
 check_python() {
   pythoncmd=''
